@@ -15,13 +15,13 @@ def client():
 
 
 @pytest.fixture
-def create_customuser(client):
-    """Create a user fixture through api"""
+def customuser(client):
+    """Create a custom user fixture through api"""
 
     user_info = {
         'username': 'test_username',
         'password': 'test_password',
-        'gender': 'Male',
+        'gender': 'male',
         'age': 20,
     }
 

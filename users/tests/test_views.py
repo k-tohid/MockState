@@ -17,7 +17,6 @@ def test_create_custom_user(client):
     }
 
     url = reverse('user_create')
-    print(url)
     response = client.post(url, user_info, format='json')
 
     # Assert response status code and token key

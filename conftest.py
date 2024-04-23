@@ -3,10 +3,6 @@ import pytest
 from django.test import Client
 from django.urls import reverse
 
-from rest_framework import status
-
-from users.models import CustomUser
-
 
 @pytest.fixture
 def client():
@@ -15,15 +11,20 @@ def client():
 
 
 @pytest.fixture
-def customuser(client):
-    """Create a custom user fixture through api"""
-
+def user_info():
+    """return the user info that was used to create a user"""
     user_info = {
         'username': 'test_username',
         'password': 'test_password',
         'gender': 'male',
         'age': 20,
     }
+    return user_info
+
+
+@pytest.fixture
+def customuser(client, user_info):
+    """Create a custom user fixture through api"""
 
     url = reverse('user_create')
     response = client.post(url, user_info, format='json')
